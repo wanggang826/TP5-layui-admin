@@ -1,0 +1,116 @@
+
+<form action="" class="js-ajax-form clearfix">
+    <table id="menuTree"  class="table table-hover table-bordered table-condensed" style="width:100%">
+            <thead>
+                <tr >
+                    <th width="200" js-order='menu_name' class="js-order">名称</th>
+                    <th width="1">
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default btn-outline btn-xs"><input id="0"  value="0" type="checkbox">全选</label>
+                        </div>
+                    </th>
+                    <th>角色权限</th>
+                </tr>
+            </thead>
+            <tbody>
+                {volist name="tree" id="vo"}
+                <tr id="{$vo.menu_id}"{if condition="$vo.pid neq 0"}pId="{$vo.pid}"{/if}>
+                    <td controller="true"><i title="{$vo.menu_icon}" class="fa fa-fw fa-lg fa-{$vo.menu_icon}"></i>&nbsp;{$vo.menu_name}</td>
+                    <td>
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default btn-outline btn-xs"><input pid="{$vo.pid}" value="{$vo.menu_id}" id="{$vo.menu_id}"  name="menu_ids[{$vo.menu_id}]" type="checkbox">全选</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="btn-group" data-toggle="buttons">
+                        {if condition="$vo['level']==0"}
+                            {if condition="count($groupAuth)!=0 && in_array($vo['menu_id'],$groupAuth)"}
+                            <label class="btn btn-default btn-outline btn-xs active"><input pid="0" value="{$vo.menu_id}" name="menu_ids[{$vo.menu_id}]" type="checkbox" checked="checked" >查看</label>
+                            {else/}
+                            <label class="btn btn-default btn-outline btn-xs"><input pid="0" value="{$vo.menu_id}" name="menu_ids[{$vo.menu_id}]" type="checkbox" >查看</label>
+                            {/if}
+                        {else/}
+                            {if condition="count($groupAuth)!=0 && in_array($vo['menu_id'],$groupAuth)"}
+                            <label class="btn btn-default btn-outline btn-xs active"><input pid="{$vo.menu_id}" value="{$vo.menu_id}" name="menu_ids[{$vo.menu_id}]" type="checkbox" checked="checked">查看</label>
+                            {else/}
+                            <label class="btn btn-default btn-outline btn-xs"><input pid="{$vo.menu_id}" value="{$vo.menu_id}" name="menu_ids[{$vo.menu_id}]" type="checkbox">查看</label>
+                            {/if}
+                            {foreach name="menu_model->where(['pid'=>$vo['menu_id']])->select()" item="v"}
+                            {if condition="count($groupAuth)!=0 && in_array($v['menu_id'],$groupAuth)"}
+                            <label class="btn btn-default btn-outline btn-xs active"><input pid="{$v.pid}" value="{$v.menu_id}" name="menu_ids[{$v.menu_id}]" id="{$v.menu_id}"  type="checkbox" checked="checked">{$v.menu_name}</label>
+                            {else/}
+                            <label class="btn btn-default btn-outline btn-xs"><input pid="{$v.pid}" value="{$v.menu_id}" name="menu_ids[{$v.menu_id}]" id="{$v.menu_id}"  type="checkbox">{$v.menu_name}</label>
+                            {/if}
+                            {/foreach}
+                        </div>
+                        {/if}
+                    </td>
+                </tr>
+                {/volist}
+            </tbody>
+
+        </table>
+        <div class="col-sm-4">
+            <button type="submit" class="btn btn-info js-submit-btn mr_3px">保存</button>
+        </div>
+</form>
+
+
+<link id="tree_table_default" href="{$static_path}plugins/treetable/default/jquery.treeTable.css" rel="stylesheet" type="text/css" />
+<script src="{$static_path}plugins/treetable/jquery.treeTable.js" type="text/javascript"> </script>
+<script type="text/javascript">
+
+$(function(){
+    var option = {
+        theme:'default',
+        column:0,
+        expandLevel : 10,
+        beforeExpand : function($treeTable, id) {},//展开过后动作
+        onSelect : function($treeTable, id) {}//选中时操作
+
+    };
+    $('#menuTree').treeTable(option);
+});
+
+$('input[type="checkbox"]').on('change',function(){
+    // console.log(this);
+    checkAll(this);
+    checkThis(this);
+})
+
+function checkAll(obj){
+    var id = $(obj).attr('id');
+    var elem = 'input[pid="'+id+'"]';
+    // console.log(obj.checked);
+    if (obj.checked) {
+        $(elem).each(function(){
+            this.checked = true;
+            $(this).parent('label').addClass('active');
+            checkAll(this);
+        })
+    }  else {
+        $(elem).each(function(){
+            this.checked = false;
+            $(this).parent('label').removeClass('active');
+            checkAll(this);
+        })
+    }
+}
+
+function checkThis(obj){
+    var elem = 'input[pid="'+0+'"]';
+    console.log(obj.checked);
+    if(obj.checked) {
+        if($(obj).parent('label').text() == '查看'){
+            obj.checked = true;
+            $(obj).parent('label').addClass('active');
+        }
+    }else{
+        if($(obj).parent('label').text() == '查看'){
+            obj.checked = false;
+            $(obj).parent('label').removeClass('active');
+        }
+    }
+
+}
+</script>

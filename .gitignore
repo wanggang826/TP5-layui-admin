@@ -1,0 +1,11 @@
+# 数据库配置
+application/database.php
+
+#文件上传
+public/upload
+
+logs
+.idea
+composer.lock
+*.log
+thinkphp

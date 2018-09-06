@@ -1,0 +1,180 @@
+@keyframes hover-color {
+  from {
+    border: 2px solid #c0c0c0; }
+  to {
+    border: 2px solid #1ab394; } }
+
+.mgr,
+.mgc {
+  position: absolute;
+  display: none; }
+
+.mgr[disabled],
+.mgc[disabled] {
+  cursor: not-allowed; }
+
+.mgr + span,
+.mgc + span {
+  position: relative;
+  display: inline-block;
+  padding-left: 30px;
+  cursor: pointer;
+  vertical-align: middle; }
+  .mgr + span:hover:before,
+  .mgc + span:hover:before {
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
+    animation-name: hover-color; }
+  .mgr + span:before,
+  .mgc + span:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    content: '';
+    border: 1px solid #c0c0c0; }
+  .mgr + span:after,
+  .mgc + span:after {
+    position: absolute;
+    display: none;
+    content: ''; }
+
+.mgr[disabled] + span,
+.mgc[disabled] + span {
+  cursor: not-allowed;
+  color: #e4e4e4; }
+  .mgr[disabled] + span:hover, .mgr[disabled] + span:before, .mgr[disabled] + span:after,
+  .mgc[disabled] + span:hover,
+  .mgc[disabled] + span:before,
+  .mgc[disabled] + span:after {
+    cursor: not-allowed; }
+  .mgr[disabled] + span:hover:before,
+  .mgc[disabled] + span:hover:before {
+    border: 1px solid #e4e4e4;
+    animation-name: none; }
+  .mgr[disabled] + span:before,
+  .mgc[disabled] + span:before {
+    border-color: #e4e4e4; }
+
+.mgr:checked + span:before,
+.mgc:checked + span:before {
+  animation-name: none; }
+
+.mgr:checked + span:after,
+.mgc:checked + span:after {
+  display: inline-block; }
+
+.mgr + span:before {
+  border-radius: 50%; }
+
+.mgr + span:after {
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #333; }
+
+
+
+.mgr:checked[disabled] + span:before {
+  filter:alpha(opacity=65);
+  opacity:.65; }
+
+.mgr:checked[disabled] + span:after {
+  filter:alpha(opacity=65);
+  opacity:.65; }
+
+.mgc + span:before {
+  border-radius: 3px; }
+
+.mgc + span:after {
+  top: 2px;
+  left: 7px;
+  box-sizing: border-box;
+  width: 6px;
+  height: 12px;
+  transform: rotate(45deg);
+  border-width: 2px;
+  border-style: solid;
+  border-color: #fff;
+  border-top: 0;
+  border-left: 0; }
+
+.mgc:checked + span:before {
+  border: #333;
+  background: #333; }
+
+.mgc:checked[disabled] + span:before {
+  filter:alpha(opacity=65);
+  opacity:.65; }
+
+
+
+/* primary */
+.mgr-primary  + span:after,
+.mgr-primary:checked[disabled] + span:after,
+.mgc-primary:checked + span:before,
+.mgc-primary:checked[disabled] + span:before {
+  border-color: #1ab394;
+  background: #1ab394;
+}
+.mgr-primary:checked + span:before,
+.mgr-primary:checked[disabled] + span:before {
+  border-color: #1ab394;
+}
+
+/* success */
+.mgr-success  + span:after,
+.mgr-success:checked[disabled] + span:after,
+.mgc-success:checked + span:before,
+.mgc-success:checked[disabled] + span:before {
+  border-color: #1c84c6;
+  background: #1c84c6;
+}
+.mgr-success:checked + span:before,
+.mgr-success:checked[disabled] + span:before {
+  border-color: #1c84c6;
+}
+
+/* info */
+.mgr-info  + span:after,
+.mgr-info:checked[disabled] + span:after,
+.mgc-info:checked + span:before,
+.mgc-info:checked[disabled] + span:before {
+  border-color: #23c6c8;
+  background: #23c6c8;
+}
+.mgr-info:checked + span:before,
+.mgr-info:checked[disabled] + span:before {
+  border-color: #23c6c8;
+}
+
+/* warning */
+.mgr-warning  + span:after,
+.mgr-warning:checked[disabled] + span:after,
+.mgc-warning:checked + span:before,
+.mgc-warning:checked[disabled] + span:before {
+  border-color: #f8ac59;
+  background: #f8ac59;
+}
+.mgr-warning:checked + span:before,
+.mgr-warning:checked[disabled] + span:before {
+  border-color: #f8ac59;
+}
+
+
+/* danger */
+.mgr-danger  + span:after,
+.mgr-danger:checked[disabled] + span:after,
+.mgc-danger:checked + span:before,
+.mgc-danger:checked[disabled] + span:before {
+  border-color: #ed5565;
+  background: #ed5565;
+}
+.mgr-danger:checked + span:before,
+.mgr-danger:checked[disabled] + span:before {
+  border-color: #ed5565;
+}

@@ -1,0 +1,42 @@
+<form class="form-horizontal js-ajax-form clearfix" action='{:url('edit')}' method='post'>
+    <!-- 自定义大小 -->
+    <input type="hidden" name="admin_id" value="{$admin_info.admin_id}">
+    <input type="hidden" name="page" value="{$page}">
+    <div class="form-group">
+        <label for="account" class="col-sm-2 control-label">帐号</label>
+        <div class="col-sm-4">
+            <p class="form-control-static">{$admin_info.account}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nickname" class="col-sm-2 control-label">姓名</label>
+        <div class="col-sm-4">
+            <input type="text" name="nickname" class="form-control" id="nickname" placeholder="姓名" value="{$admin_info.nickname}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="phone" class="col-sm-2 control-label">手机</label>
+        <div class="col-sm-4">
+            <input type="tel" name="phone" class="form-control" id="phone" placeholder="手机" value="{$admin_info.phone}">
+        </div>
+    </div>
+{if condition="$admin_info['group'] neq 1"}
+    <div class="form-group">
+        <label  class="col-sm-2 control-label">角色</label>
+        <div class="col-sm-4">
+            <select class="form-control" name="group">
+                {volist name="authGroup" id="vo"}
+                <option value="{$vo.group_id}" {if condition='$vo.group_id eq $admin_info.group'}selected{/if} >{$vo.group_name}</option>
+                {/volist}
+            </select>
+        </div>
+    </div>
+{/if}
+    <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label"></label>
+        <div class="col-sm-4">
+            <button type="submit" class="btn btn-info js-submit-btn mr_3px">确认</button>
+            <button type="reset" class="btn btn-info">重置</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <title>{$admin_title}</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    {include file="layout/static"}
+    <style>
+        .layout-return-btn{
+            position: relative;
+            top: -8px;
+            left: -6px;
+            margin: 0!important;
+        }
+        body{
+            height: 1vh;
+        }
+    </style>
+</head>
+<body class="gray-bg  animated fadeIn">
+ 
+    <div class="wrapper wrapper-content ibox float-e-margins" >
+        <div class="ibox-title visible-lg">
+            <!-- <h5> -->
+                <ul class="breadcrumb inline pull-left" >
+                    <li>{$menu.pmenu}</li>
+                    <li>{$menu.menu_name}</li>
+                </ul>
+            <!-- </h5> -->
+            <a class="pull-right btn btn-default btn-xs" title="刷新当前" href=""><i class="fa fa-refresh"></i></a>
+        </div>
+        <div class="ibox-content">
+{__CONTENT__}
+        </div>
+    </div>
+</body>
+{include file="layout/js"}
+</html>
+<style type="text/css">
+    .panel-heading{
+        display: none;
+    }
+    .panel-footer{
+        background-color: #fff;
+        border: none
+    }
+    .panel-body.form-inline .form-group{
+        margin-right: 10px!important;
+        margin-bottom: 10px!important;
+
+    }
+    .panel-body.form-inline .form-group .form-control{
+        width: 200px;
+    }
+    .panel-body.form-inline .form-group.group1 .form-control,
+    .panel-body.form-inline .form-group.group2 .form-control
+    {
+        width: 205px;
+    }
+    .panel-body.form-inline{
+        padding-bottom: 0;
+    }
+    .panel-body.form-inline .form-group.pull-right {
+        margin: 0!important;
+    }
+    .panel-body.form-inline .form-group.group1{
+        margin-right: 0px!important;
+    }
+</style>
+<script type="text/javascript">
+    // 页面初始化
+    $(function(){
+        $('a').click(function(){
+            $(this).blur();
+        })
+        $('.city-picker-span').css('width', '');
+    })
+
+</script>

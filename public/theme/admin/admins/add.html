@@ -1,0 +1,44 @@
+<form class="form-horizontal js-ajax-form clearfix" action='{:url('add')}' method='post'>
+    <!-- 自定义大小 -->
+    <div class="form-group">
+        <label for="account" class="col-sm-2 control-label">帐号</label>
+        <div class="col-sm-4">
+            <input type="text" name="account" class="form-control" id="account" placeholder="帐号以字母开头，只允许字母、数字和下划线">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nickname" class="col-sm-2 control-label">姓名</label>
+        <div class="col-sm-4">
+            <input type="text" name="nickname" class="form-control" id="nickname" placeholder="姓名">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-sm-2 control-label">密码</label>
+        <div class="col-sm-4">
+            <input type="password" name="password" class="form-control" id="password" placeholder="密码">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="phone" class="col-sm-2 control-label">手机</label>
+        <div class="col-sm-4">
+            <input type="tel" name="phone" class="form-control" id="phone" placeholder="手机">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">角色</label>
+        <div class="col-sm-4">
+            <select class="i-select form-control" name="group">
+                {volist name="authGroup" id="vo"}
+                <option value="{$vo.group_id}">{$vo.group_name}</option>
+                {/volist}
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label"></label>
+        <div class="col-sm-4">
+            <button type="submit" class="btn btn-info js-submit-btn mr_3px">确认</button>
+            <button type="reset" class="btn btn-info">重置</button>
+        </div>
+    </div>
+</form>

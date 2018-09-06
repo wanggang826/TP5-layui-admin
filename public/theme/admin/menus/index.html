@@ -1,0 +1,88 @@
+<div class="table-responsive">
+    <div class="btn-group pull-left hidden-xs">
+        <a href="{:url('add')}" class="btn btn-outline btn-default js-window-load"js-title="新增菜单" js-unique="true">
+            <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;新增
+        </a>
+        <a href="{:url('menus/del')}" class="btn btn-outline btn-default del-all" text="删除后将无法恢复，请谨慎操作">
+            <i class="fa fa-trash" aria-hidden="true" ></i>&nbsp;删除
+        </a>
+    </div>
+    <div class="pull-right col-sm-3 search">
+       <!--  <form role="form" action="{:url('menus/index')}" class="input-group">
+            <input class="form-control input-outline" name="keywords" type="text" placeholder="搜索" value="{:input('keywords')}">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="btn-text">搜索</span><span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                </ul>
+                <button class="btn btn-primary btn-outline"><i class="fa fa-search"></i><span class="btn-desc">&nbsp;搜索</span></button>
+            </span>
+        </form> -->
+    </div>
+    <table id="menuTree"  class="table table-hover table-bordered table-condensed" style="width:100%">
+        <thead>
+            <tr >
+                <th class="hidden-xs" width="1"><input type="checkbox" class="i-checks i-check-all my-all-check" name="input[]"></th>
+                <th width="200" js-order='menu_name' class="js-order">名称</th>
+                <th class="hidden-xs" width="50">排序</th>
+                <th class="hidden-xs" width="70">状态&nbsp;<i class="fa fa-hand-pointer-o"></i></th>
+                <th class="hidden-xs">URL</th>
+                <th width="200">操作</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {volist name="tree" id="vo"}
+            <tr id="{$vo.menu_id}"{if condition="$vo.pid neq 0"}pId="{$vo.pid}"{/if}>
+                <td class="hidden-xs"><input type="checkbox" class="i-checks" name="input[]" value="{$vo.menu_id}"></td>
+                <td controller="true"><i title="{$vo.menu_icon}" class="fa fa-fw fa-lg fa-{$vo.menu_icon}"></i>&nbsp;{$vo.menu_name}</td>
+                <td class="hidden-xs">{$vo.sort}</td>
+                <td class="hidden-xs">
+                     {if condition="$vo.status eq 0"}
+                        <a href="{:url('changeStatus',['menu_id'=>$vo.menu_id,'status'=>1])}" js-color="#eea236" class="btn btn-danger btn-outline btn-xs js-del-btn" text="菜单将会在导航中显示" js-btn="<i class='fa fa-check fa-fw'></i>显示"><i class="fa fa-times fa-fw"></i><span class="hidden-xs">隐藏</span></a>
+                        {elseif condition="$vo.status eq 1"/}
+                        <a href="{:url('changeStatus',['menu_id'=>$vo.menu_id,'status'=>0])}" js-color="#eea236" class="btn btn-default btn-outline btn-xs js-del-btn" text="菜单将不会显示在导航中" js-btn="<i class='fa fa-times fa-fw'></i>隐藏"><i class="fa fa-check fa-fw"></i><span class="hidden-xs">显示</span></a>
+                        {/if}
+                </td>
+                <td class="hidden-xs" controller="true">{$vo.url}</td>
+                <td>
+                    <span class="btn-group">
+                        {if condition="$vo['level'] < 2"}
+                        <a href="{:url('menus/add',['pid'=>$vo['menu_id']])}" class="btn btn-outline btn-default btn-xs js-window-load" js-title="新增子菜单" js-unique="true"><i class="fa fa-plus fa-fw"></i><span class="hidden-xs">新增子项</span></a>
+                        {else/}
+                        <a href="javascript:;" class="btn btn-outline btn-default btn-xs disabled"><i class="fa fa-plus fa-fw"></i><span class="hidden-xs">新增子项</span></a>
+                        {/if}
+                        <a href="{:url('menus/edit',['menu_id'=>$vo.menu_id])}" class="btn btn-outline btn-default btn-xs js-window-load" js-title="编辑：{$vo.menu_name}" js-unique="true"><i class="fa fa-edit fa-fw"></i><span class="hidden-xs">编辑</span></a>
+                        <a href="{:url('menus/del',['id'=>$vo.menu_id])}" class="btn btn-outline btn-danger btn-xs js-del-btn" text="删除：{$vo.menu_name}，将同时删除子菜单！"><i class="fa fa-trash-o fa-fw"></i><span class="hidden-xs">删除</span></a>
+                    </span>
+                </td>
+            </tr>
+        {/volist}
+        </tbody>
+    </table>
+    <div class="cleanfix">
+        <div class="pull-left">
+
+        </div>
+    </div>
+</div>
+
+<link id="tree_table_default" href="{$static_path}plugins/treetable/default/jquery.treeTable.css" rel="stylesheet" type="text/css" />
+<script src="{$static_path}/plugins/treetable/jquery.treeTable.js" type="text/javascript"> </script>
+<script type="text/javascript">
+
+$(function(){
+    var option = {
+        theme:'default',
+        column:1,
+        expandLevel : 1,
+        beforeExpand : function($treeTable, id) {},//展开过后动作
+        onSelect : function($treeTable, id) {}//选中时操作
+    };
+    $('#menuTree').treeTable(option);
+});
+</script>

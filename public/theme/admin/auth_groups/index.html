@@ -1,0 +1,64 @@
+<div class="panel panel-default">
+    <div class="panel-heading hidden-xs">条件搜索</div>
+    <form role="form" action="{:url('index')}" class="form-inline panel-body hidden-xs">
+        <div class="form-group">
+            <label for="ex1" class="sr-only">角色</label>
+            <input type="text" placeholder="角色名称" id="ex1" class="form-control" name="group_name" value="{:input('group_name')}">
+        </div>
+        <div class="form-group pull-right">
+            <div class="btn-group">
+                <button class="btn btn-primary btn-outline btn-w-m btn-rec">
+                    <i class="fa fa-search"></i><span class="btn-desc">&nbsp;查询</span>
+                </button>
+                <a href="{:url('')}" class="btn btn-default btn-outline btn-rec">
+                    <i class="fa fa-refresh"></i><span class="btn-desc">&nbsp;重置</span>
+                </a>
+            </div>
+        </div>
+    </form>
+    <div class="panel-footer clearfix ">
+        <div class="pull-left btn-group hidden-xs" >
+            <a href="{:url('add')}" class="btn btn-default js-window-load" js-title="新增用户组" js-unique="true">
+                <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;新增
+            </a>
+            <a href="{:url('del')}" class="btn btn-default del-all" text="删除后将无法恢复，请谨慎操作">
+                <i class="fa fa-trash" aria-hidden="true"></i>&nbsp;删除
+            </a>
+        </div>
+        <div class="pull-right">
+            {$groups->render()}
+        </div>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th width='1'><input type="checkbox" class="my-all-check" name="input[]"></th>
+                <th width="100">ID</th>
+                <th width="150">角色</th>
+                <th width="150">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {volist name="groups" id="vo"}
+                <tr>
+                   <td width='1'><input type="checkbox" value="{$vo.group_id}" class="i-checks" name="input[]"></td>
+                    <td>{$vo.group_id}</td>
+                    <td>{$vo.group_name}</td>
+                    <td>
+                        {if condition="$vo.group_id eq 1"}
+                        --
+                        {else/}
+                        <span class="btn-group">
+                            <a href="{:url('setAuth',['group_id'=>$vo.group_id])}" class="btn btn-default btn-outline btn-xs js-window-load" title="设置权限--{$vo.group_name}"><i class="fa fa-wrench fa-fw"></i><span class="hidden-xs">授权</span></a>
+                            <a href="{:url('edit',['group_id'=>$vo.group_id,'page'=>$nowpage])}" class="btn btn-default btn-outline btn-xs js-window-load" title="编辑--{$vo.group_name}用户组" js-width="35%" js-height="50%"><i class="fa fa-edit fa-fw"></i><span class="hidden-xs" >编辑</span></a>
+                            <a href="{:url('del',['id'=>$vo.group_id])}" class="btn  btn-danger btn-outline btn-xs js-del-btn" text="删除后将无法恢复,请谨慎操作！"><i class="fa fa-trash-o fa-fw"></i><span class="hidden-xs">删除</span></a>
+                        </span>
+                        {/if}
+                    </td>
+                </tr>
+            {/volist}
+        </tbody>
+    </table>
+</div>

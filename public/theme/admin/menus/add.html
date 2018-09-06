@@ -1,0 +1,112 @@
+<form class="form-horizontal js-ajax-form clearfix" action='{:url('menus/add')}'>
+   <div class="form-group">
+        <label for="select-tree" class="col-sm-2 control-label">上级菜单</label>
+        <div class="col-sm-4">
+            {$select}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="menu_name" class="col-sm-2 control-label">菜单名称</label>
+        <div class="col-sm-4">
+            <input type="hidden" name="create_time" value="">
+            <input type="text" name="menu_name" class="form-control" id="menu_name" placeholder="菜单名称">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sort" class="col-sm-2 control-label">菜单图标</label>
+        <div class="col-sm-4">
+            <div class="input-group">
+                <input type="text" name="menu_icon" id="menu_icon" readonly="" class="form-control" placeholder="">
+                <span class="input-group-btn">
+                    <a class="btn btn-primary btn-w-m js-window-load" href="{:url('admin/menus/fontawesome')}" js-unique="true" js-width="80%" js-height='85%'>选择图标</a>
+                </span>
+
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sort" class="col-sm-2 control-label">排序</label>
+        <div class="col-sm-2">
+            <input type="text" js-test="" name="sort" class="form-control" id="sort" placeholder="排序"><i id="sortwarning" style="color: red"></i>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sort" class="col-sm-2 control-label">状态</label>
+        <div class="col-sm-4">
+            <label class="i-lab">
+                <input type="radio" name="status" value='1' class="mgr mgr-primary mgr-lg" checked><span>显示</span>
+            </label>
+            <label class="i-lab">
+                <input type="radio" name="status" value='0' class="mgr mgr-primary mgr-lg" ><span>隐藏</span>
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="menu_des" class="col-sm-2 control-label">菜单描述</label>
+        <div class="col-sm-4">
+            <input type="text" name="menu_des" class="form-control" id="menu_des" placeholder="菜单描述">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">URL类型</label>
+        <div class="col-sm-4">
+            <label class="i-lab">
+                <input type="radio" name="url_type" value='1' text="内链接" class="mgr mgr-primary mgr-lg" checked=""><span>内链接</span>
+            </label>
+            <label class="i-lab">
+                <input type="radio" name="url_type" value='2' text="外链接" class="mgr mgr-primary mgr-lg"><span>外链接</span>
+            </label>
+        </div>
+    </div>
+    <div id="in">
+        <div class="form-group">
+            <label for="module" class="col-sm-2 control-label">模块</label>
+            <div class="col-sm-4">
+                <input type="text" name="module" class="form-control" id="module" placeholder="">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="controller" class="col-sm-2 control-label" >控制器</label>
+            <div class="col-sm-4">
+                <input type="text" name="controller" class="form-control" id="controller" placeholder="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="action" class="col-sm-2 control-label">方法</label>
+            <div class="col-sm-4">
+                <input type="text" name="action" class="form-control" id="action" placeholder="">
+            </div>
+        </div>
+    </div>
+    <div id="out">
+        <div class="form-group">
+            <label for="url" class="col-sm-2 control-label">链接地址</label>
+            <div class="col-sm-4">
+                <input type="text" name="url" class="form-control" id="url" placeholder="">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label"></label>
+        <div class="col-sm-4">
+            <button type="submit" class="btn btn-primary js-submit-btn mr_3px">确认</button>
+            <button type="reset" class="btn btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('input[name="url_type"]').each(function(){
+        if (this.checked) {
+            $(this).val()==1 && $('#in').css('display','block') && $('#out').css('display','none');
+            $(this).val()==2 && $('#in').css('display','none') && $('#out').css('display','block');
+        }
+    })
+    $('input[name="url_type"]').click(function(){
+        $(this).val()==1 && $('#in').css('display','block') && $('#out').css('display','none');
+        $(this).val()==2 && $('#in').css('display','none') && $('#out').css('display','block');
+    })
+})
+</script>

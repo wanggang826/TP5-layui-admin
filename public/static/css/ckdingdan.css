@@ -1,0 +1,659 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	box-sizing: border-box;
+}
+
+.d_container-fluid {
+	width: 100%;
+	background: #F2F2F2;
+}
+
+.d_padi {
+	padding: 0 !important;
+}
+
+.d_mag {
+	margin: 0 !important;
+}
+
+.d_top a {
+	color: black;
+	text-decoration: none;
+	font-size: 12px;
+	float: left;
+	margin: 0 !important;
+	padding: 8px 5px;
+}
+
+.activ {
+	margin: 0 5px;
+	margin-top: 5px;
+	float: right;
+	height: 25px;
+	width: 1px;
+	background: #E0E0E0;
+}
+
+.d_redp {
+	color: #ED145B !important;
+}
+
+.d_huip {
+	color: #666666 !important;
+}
+
+.d_float a {
+	text-decoration: none;
+	float: right;
+	display: block;
+	padding: 8px 5px;
+	color: #666666 !important;
+}
+
+.d_float img {
+	vertical-align: auto !important;
+	margin: 0 3px;
+}
+
+.mag-top {
+	margin-top: 20px;
+}
+
+.mag-top1 {
+	margin-top: 30px;
+}
+
+.mag-top2 {
+	margin-top: 8px;
+}
+
+.d_logo {
+	margin-left: 15px;
+}
+
+.input1 {
+	background: url(../img/sousuo_03.png)no-repeat left;
+	padding-left: 35px;
+	outline: none;
+	margin-left: -30px;
+	float: left;
+	border: 2px solid #ED145B;
+	width: 80%;
+	height: 33px;
+}
+
+.input2 {
+	border: none;
+	outline: none;
+	font-family: "宋体";
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 33px;
+	text-align: center;
+	color: white;
+	width: 11%;
+	height: 33px;
+	background: #ED145B;
+	float: left;
+}
+
+
+/*head*/
+
+.position {
+	font-size: 12px;
+	overflow: hidden;
+	margin: 10px auto;
+	margin-bottom: 0;
+}
+
+.position p {
+	color: #616161;
+	float: left;
+	padding-left: 3px;
+}
+
+.position a {
+	text-decoration: none !important;
+	color: #616161;
+	float: left;
+	padding-left: 3px;
+}
+
+
+/*面包屑*/
+.order_deatail{
+	padding: 20px 0;
+	border-top: 1px solid #E6E6E6;
+
+}
+.order_deatail p{
+	margin-bottom: 0!important;
+	background: #F9F9F9;
+	padding: 5px 16px;
+	border: 1px solid #E6E6E6;
+	font-size: 13px;
+}
+.order_deatail p span{
+	margin-right: 50px;
+}
+.ckliuche {
+	padding: 40px 0;
+	border-top: 1px solid #E6E6E6;
+	overflow: hidden;
+}
+
+.cklcdiv {
+	overflow: hidden;
+	width: 92%;
+	margin: 0 auto;
+}
+
+.cklctime {
+	overflow: hidden;
+	float: left;
+	width: 20%;
+}
+
+.ckpaixia {
+	font-weight: bold;
+	text-align: center;
+	color: #ED145B;
+	font-size: 14px;
+}
+
+.cklimg {
+	margin-bottom: 10px;
+	float: right;
+	width: 50%;
+}
+
+.cklimg1 {
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.cklimg2 {
+	margin-bottom: 10px;
+	width: 50%;
+}
+
+.rem {
+	text-indent: -1.5rem;
+}
+
+.rem1 {
+	text-indent: 2rem;
+}
+
+.ckptime {
+	height: 20px;
+	overflow: hidden;
+	text-align: center;
+	font-size: 14px;
+	color: #B8B8B8;
+	clear: both;
+}
+
+.d-message {
+	margin-bottom: 50px;
+	overflow: hidden;
+}
+
+.messagedindan {
+	float: left;
+	overflow: hidden;
+	width: 40%;
+}
+
+.messagehead {
+	overflow: hidden;
+	background: #F9F9F9;
+}
+
+.zuoce {
+	margin-bottom: 0 !important;
+	float: left;
+	height: 30px;
+	background: #ED145B;
+	width: 5px;
+}
+
+.messagedaohang {
+	margin-bottom: 0 !important;
+	padding-left: 15px;
+	line-height: 30px;
+	font-size: 14px;
+	font-weight: bold;
+	height: 30px;
+	border: 1px solid #EAEAEA;
+	border-left: none;
+}
+
+.messagediv {
+	float: right;
+	margin: 15px auto;
+	width: 98%;
+	overflow: hidden;
+}
+
+.messagep {
+	height: 18px;
+	margin-bottom: 10px;
+	overflow: hidden;
+	font-size: 12px;
+	overflow: hidden;
+}
+
+.messagep1 {
+	text-align: right;
+	width: 14%;
+	float: left;
+	color: #999999;
+}
+
+.messagep2 {
+	height: 18px;
+	overflow: hidden;
+	color: #262626;
+}
+
+.messagediv2 {
+	width: 55%;
+	float: right;
+}
+
+.messageinfo {
+	margin-top: 15px;
+}
+
+.messageinfodiv {
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.messageinfoimg {
+	position: absolute;
+	left: 0;
+	top: 4px;
+}
+
+.messageinfop {
+	height: 20px;
+	overflow: hidden;
+	padding-left: 15px;
+}
+
+.cartdiv {
+	
+	margin-bottom: 60px;
+	overflow: hidden;
+}
+
+.cartdiv1 {
+	margin-bottom: 20px;
+	margin-top: 11px;
+	overflow: hidden;
+}
+
+.cartdiv2 {
+	float: left;
+	width: 24%;
+}
+
+.cartdiv1p {
+	margin: 0 0.2%;
+	font-size: 14px;
+	color: #4C4C4C;
+	font-weight: bold;
+	text-align: center;
+	border-bottom: 2px solid #FFAFCC;
+	padding-bottom: 2px;
+	float: left;
+}
+
+.carthead {
+	height: 40px;
+	overflow: hidden;
+	background: #F2F2F2;
+}
+
+.cart-p1 {
+	line-height: 40px;
+	margin: 0 10px;
+	margin-bottom: 0 !important;
+	float: left;
+	font-size: 14px;
+}
+
+.cartspan1 {
+	color: #A6A6A6;
+}
+
+.cartfont {
+	border-bottom: 1px solid #E6E6E6;
+	height: 80px;
+
+	overflow: hidden;
+}
+
+.heights {
+	height: 80px;
+}
+
+.cartimg {
+	border-right: none;
+	border-top: none;
+	width: 20%;
+	float: left;
+	padding: 5px;
+}
+
+.border1 {
+	clear: both;
+}
+
+.cartfontdiv {
+	padding-top: 5px;
+	width: 55%;
+	float: left;
+}
+
+.text-left p {
+	padding-left: 30%;
+}
+
+.cartfont p {
+	height: 20px;
+	overflow: hidden;
+}
+
+.cartfont2 p {
+	height: 20px;
+	overflow: hidden;
+	text-align: left;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.cartpad {
+	padding-top: 4%;
+}
+
+.dnumber {
+	float: left;
+	width: 25%;
+	height: 80px;
+}
+
+.dnumber p {
+	height: 100%;
+	line-height: 80px;
+	text-align: center;
+	margin-bottom: 0 !important;
+}
+
+.width1 {
+	float: left;
+	overflow: hidden;
+	width: 35%;
+}
+
+.width2 {
+	float: left;
+	overflow: hidden;
+	width: 22%;
+}
+
+.width3 {
+	float: left;
+	overflow: hidden;
+	width: 14%;
+}
+
+.width4 {
+	float: left;
+	overflow: hidden;
+	width: 17%;
+}
+
+.width5 {
+	border-right: none !important;
+	float: left;
+	overflow: hidden;
+	width: 10%;
+}
+
+.cartcont {
+	height: 80px;
+	border-right: 1px solid #E6E6E6;
+	margin: 0 0.25%;
+}
+
+.cartleft1 p {
+	color: #939393;
+	margin-top: 5%;
+	padding-left: 29%;
+}
+
+.cartleft2 p {
+	margin-bottom: 0 !important;
+	line-height: 80px;
+	height: 80px;
+	text-align: center;
+}
+
+.cartov {
+	border: 1px solid #E6E6E6;
+	overflow: hidden;
+}
+.margin5{
+	margin: 0 !important;
+}
+.carttext p {
+	text-align: right;
+}
+
+.carttext1 {
+	margin: 15px 0;
+}
+
+.cartdp {
+	font-weight: bold;
+	font-size: 14px;
+	color: #ED145B;
+}
+
+.carttext1 span {
+	color: #4C4C4C;
+}
+
+.cartpspan {
+	color: #939393 !important;
+	font-weight: normal;
+	margin-right: 40px;
+}
+
+.carttext {
+	padding-right: 15px;
+}
+
+.cartdp1 {
+	font-size: 25px;
+	color: #ED145B;
+}
+
+.cartdp1 span {
+	color: #4C4C4C;
+}
+
+
+/*foot*/
+
+.fild {
+	overflow: hidden;
+	background: #F5F5F5;
+	border-top: 2px solid #ED145B;
+	width: 100%;
+}
+
+.d_floarig {
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.d_floarig p {
+	margin-top: 5px;
+}
+
+.d_floarig img {
+	display: block;
+	margin: 0 auto;
+}
+
+.magleft {
+	margin-left: 11%;
+}
+
+.flaorigt {
+	float: right;
+}
+
+.list-style {
+	margin-top: 15px;
+	font-family: "宋体";
+}
+
+.list-style ul li {
+	padding: 5px 0;
+	list-style: none;
+}
+
+.list-style a {
+	text-decoration: none;
+	color: #898989;
+}
+
+.list-style a:hover {
+	font-weight: bold;
+	color: black;
+}
+
+.ul1 {
+	float: left;
+	width: 10%;
+}
+
+.ul2 {
+	text-align: center;
+	float: left;
+	width: 15%;
+}
+
+.ul3 {
+	float: left;
+	width: 14%;
+}
+
+.ul3 img {
+	display: block;
+	margin: 0 auto;
+}
+
+.fenge {
+	float: left;
+	width: 1px;
+	height: 160px;
+	background: #E6E6E6;
+}
+
+.text {
+	color: #999999;
+	margin-top: 8px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.cart {
+	overflow: hidden;
+}
+.cartfontdiv p{
+	font-size: 12px;
+	margin-top: 3%;
+}
+.messageinfop{
+	font-size: 12px;
+}
+.order_deconts{
+	background: #F9F9F9;
+	margin-top: 20px;
+	padding: 15px 20px 0 20px;
+	border: 1px solid #EAEAEA;
+}
+.order_deconts h5{
+	font-weight: bold;
+}
+.order_deconts h5 span{
+   color: #C2C2C2;
+	font-weight: normal;
+}
+
+
+
+/*兼容*/
+
+@media only screen and (min-width:768px) {
+	.messagep1 {
+		width: 21%;
+	}
+	.paddig {
+		padding: 0 10px;
+	}
+	.cartleft1 p {
+		padding-left: 14%;
+	}
+	.cartimg{
+		width: 28%;
+	}
+	.dnumber{
+		width: 17%;
+	}
+}
+
+@media only screen and (min-width:992px) {
+	.messagep1 {
+		width: 16%;
+	}
+	.paddig {
+		padding: 0;
+	}
+	.cartleft1 p {
+		padding-left: 24%;
+	}
+	.cartimg{
+		width: 23%;
+	}
+	.dnumber{
+		width: 22%;
+	}
+}
+
+@media only screen and (min-width:1200px) {
+	.messagep1 {
+		width: 14%;
+	}
+	.cartleft1 p {
+		padding-left: 29%;
+	}
+	.cartimg{
+		width: 20%;
+	}
+	.dnumber{
+		width: 25%;
+	}
+}

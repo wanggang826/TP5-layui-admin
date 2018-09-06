@@ -1,0 +1,75 @@
+<div class="panel panel-default">
+    <div class="panel-heading hidden-xs">条件搜索</div>
+    <form role="form" action="{:url('admins/index')}" class="form-inline panel-body hidden-xs">
+        <div class="form-group">
+            <label for="ex1" class="sr-only">姓名</label>
+            <input type="text" placeholder="姓名" id="ex1" class="form-control" name="nickname" value="{:input('nickname')}">
+        </div>
+        <div class="form-group pull-right">
+            <div class="btn-group">
+                <button class="btn btn-primary btn-outline btn-w-m btn-rec">
+                    <i class="fa fa-search"></i><span class="btn-desc">&nbsp;查询</span>
+                </button>
+                <a href="{:url('')}" class="btn btn-default btn-outline btn-rec">
+                    <i class="fa fa-refresh"></i><span class="btn-desc">&nbsp;重置</span>
+                </a>
+            </div>
+        </div>
+    </form>
+    <div class="panel-footer clearfix ">
+        <div class="pull-left btn-group hidden-xs" >
+            <a href="{:url('admins/add')}" class="btn btn-default js-window-load" js-title="新增管理员" js-unique="true">
+                <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;新增
+            </a>
+            <a href="{:url('admins/del')}" class="btn btn-default del-all" text="删除后将无法恢复，请谨慎操作">
+                <i class="fa fa-trash" aria-hidden="true"></i>&nbsp;删除
+            </a>
+        </div>
+        <div class="pull-right">
+            {$admins->render()}
+        </div>
+    </div>
+</div>
+<div class="table-responsive">
+        <table class="table table-hover table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th width='1'><input type="checkbox" class="my-all-check" name="input[]"></th>
+                <th width="150">帐号</th>
+                <th width="250" class="hidden-xs">姓名</th>
+                <th width="100">角色</th>
+                <th class="hidden-xs">手机</th>
+                <th width="300" class="hidden-xs">最后登录时间</th>
+                <th width="250">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {volist name="admins" id="vo"}
+                <tr>
+                   <td width='1'><input type="checkbox" value="{$vo.admin_id}" class="i-checks" name="input[]"></td>
+                    <td>{$vo.account}</td>
+                    <td class="hidden-xs">{$vo.nickname}</td>
+                    <td>{$vo.group|getNamebyPk='AuthGroup','group_id','group_name',###}</td>
+                    <td class="hidden-xs">{$vo.phone}</td>
+                    <td class="hidden-xs">{$vo.last_login_time|date="Y-m-d H:i:s",###}</td>
+                    <td >
+                        <span class="btn-group">
+                            <a href="{:url('edit',['admin_id'=>$vo.admin_id])}" class="btn btn-default btn-outline btn-xs js-window-load" title="编辑--{$vo.account}"><i class="fa fa-edit fa-fw"></i><span class="hidden-xs">编辑</span></a>
+                        {if condition="$vo['group'] neq 1"}
+                            <a href="{:url('reset_password',['admin_id'=>$vo.admin_id])}" class="btn btn-default btn-outline btn-xs js-window-load" title="密码重置--{$vo.account}"><i class="fa fa-gg fa-fw"></i><span class="hidden-xs">密码重置</span></a>
+                            <a href="{:url('del',['id'=>$vo.admin_id])}" class="btn  btn-danger btn-outline btn-xs js-del-btn" text="删除后将无法恢复,请谨慎操作！"><i class="fa fa-trash-o fa-fw"></i><span class="hidden-xs">删除</span></a>
+                        {/if}
+                        </span>
+                    </td>
+                </tr>
+            {/volist}
+        </tbody>
+    </table>
+        <!-- <div class="cleanfix">
+            <div class="pull-left pagination hidden-xs" >
+            </div>
+            <div class="pull-left">
+            </div>
+        </div> -->
+
+    </div>
