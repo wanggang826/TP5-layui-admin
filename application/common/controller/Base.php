@@ -6,7 +6,7 @@ use think\Session;
 use think\Log;
 /**
  * 基础类
- * by chick 2017-05-02
+ * by wanggang 2017-05-02
  */
 class Base extends Controller
 {

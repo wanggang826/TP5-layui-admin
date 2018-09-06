@@ -7,7 +7,7 @@ use think\Config;
 use think\Url;
 /**
  * 权限验证类
- * @author  chick
+ * @author  wanggang
  * @version 2017.05.18
  * 用于thinkphp 5.0 以上版本
  * 数据库结构

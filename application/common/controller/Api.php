@@ -3,7 +3,7 @@ namespace app\common\controller;
 use think\Request;
 /**
  * Api基础类
- * by chick 2017-05-03
+ * by wanggang 2017-05-03
  * $api = new Api();
  * $api->setType('array');
  * 未设置code,调用方式，
