@@ -11,3 +11,4 @@ TP5-layui-admin
 
 ##目前包含后台菜单配置,角色(用户组)管理,权限配置,系统用户管理
 
+ ![image](https://github.com/wanggang826/TP5-layui-admin/blob/master/public/static/show_admin.png)
