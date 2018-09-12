@@ -1,0 +1,101 @@
+<div class="panel panel-default">
+    <div class="panel-heading hidden-xs">条件搜索</div>
+    <form role="form" action="{:url('banner/index')}" class="form-inline panel-body hidden-xs">
+        <div class="form-group">
+            <select class=" form-control" name="status" >
+                <option value="">状态</option>
+                <option value="0" {if condition="input('status') eq 0 && input('status') != null"} selected{/if} >禁用</option>
+                <option value="1" {if condition="input('status') eq 1"} selected{/if}>启用</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <select class=" form-control" name="type" >
+                <option value="">类型</option>
+                <option value="0" {if condition="input('type') eq 0 && input('type') != null"} selected{/if} >其他图片</option>
+                <option value="1" {if condition="input('type') eq 1"} selected{/if}>首页banner</option>
+            </select>
+        </div>
+        <div class="form-group pull-right">
+            <div class="btn-group">
+                <button class="btn btn-primary btn-outline btn-w-m btn-rec">
+                    <i class="fa fa-search"></i><span class="btn-desc">&nbsp;查询</span>
+                </button>
+                <a href="{:url('')}" class="btn btn-default btn-outline btn-rec">
+                    <i class="fa fa-refresh"></i><span class="btn-desc">&nbsp;重置</span>
+                </a>
+            </div>
+        </div>
+    </form>
+    <div class="panel-footer clearfix ">
+        <div class="pull-left btn-group hidden-xs" >
+            <a href="{:url('banner/add')}" class="btn btn-default js-window-load" js-title="新增图片" js-unique="true">
+                <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;新增
+            </a>
+            <a href="{:url('banner/adds')}" class="btn btn-default js-window-load" js-title="新增图片" js-unique="true">
+                <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;批量新增
+            </a>
+            <a href="{:url('banner/del')}" class="btn btn-default del-all" text="删除后将无法恢复，请谨慎操作">
+                <i class="fa fa-trash" aria-hidden="true"></i>&nbsp;删除
+            </a>
+        </div>
+        <div class="pull-right">
+            {$lists->render()}
+        </div>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-condensed">
+        <thead>
+        <tr>
+            <th width='1'><input type="checkbox" class="my-all-check" name="input[]"></th>
+            <th width="1">ID</th>
+            <th width="150" class="hidden-xs">标题</th>
+            <th width="100">类型</th>
+            <th width="100">状态</th>
+            <th width="100">查看</th>
+            <th width="300" class="hidden-xs">链接</th>
+            <th width="250">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {volist name="lists" id="vo"}
+        <tr>
+            <td width='1'><input type="checkbox" value="{$vo.id}" class="i-checks" name="input[]"></td>
+            <td>{$vo.id}</td>
+            <td class="hidden-xs">{$vo.title}</td>
+            <td>
+                {if condition="$vo.type eq 0"}
+                <a href="{:url('changeType',['id'=>$vo.id,'type'=>1])}" js-color="#eea236" class="btn btn-danger btn-outline btn-xs js-del-btn" text="图片将会显示在网站首页" js-btn="<i class='fa fa-check fa-fw'></i>首页显示"><span class="hidden-xs">其他图片</span></a>
+                {elseif condition="$vo.type eq 1"/}
+                <a href="{:url('changeType',['id'=>$vo.id,'type'=>0])}" js-color="#eea236" class="btn btn-default btn-outline btn-xs js-del-btn" text="图片将不会显示在网站首页" js-btn="<i class='fa fa-times fa-fw'></i>其他图片"><span class="hidden-xs">首页banner</span></a>
+                {/if}
+            </td>
+            <td >
+                {if condition="$vo.status eq 0"}
+                <a href="{:url('changeStatus',['id'=>$vo.id,'status'=>1])}" js-color="#eea236" class="btn btn-danger btn-outline btn-xs js-del-btn" text="图片将会启用" js-btn="<i class='fa fa-check fa-fw'></i>启用"><i class="fa fa-times fa-fw"></i><span class="hidden-xs">禁用</span></a>
+                {elseif condition="$vo.status eq 1"/}
+                <a href="{:url('changeStatus',['id'=>$vo.id,'status'=>0])}" js-color="#eea236" class="btn btn-default btn-outline btn-xs js-del-btn" text="图片将会被禁用" js-btn="<i class='fa fa-times fa-fw'></i>禁用"><i class="fa fa-check fa-fw"></i><span class="hidden-xs">启用</span></a>
+                {/if}
+            </td>
+            <td class="hidden-xs"><a href="{:url('showImg',['id'=>$vo.id])}" class="btn btn-default btn-outline btn-xs js-window-load" title="查看--{$vo.title}"><span class="hidden-xs">查看</span></a>
+            </td>
+            <td>{$vo.url}</td>
+            <td >
+                <span class="btn-group">
+                    <a href="{:url('edit',['id'=>$vo.id])}" class="btn btn-default btn-outline btn-xs js-window-load" title="编辑--{$vo.title}"><i class="fa fa-edit fa-fw"></i><span class="hidden-xs">编辑</span></a>
+
+                    <a href="{:url('del',['id'=>$vo.id])}" class="btn  btn-danger btn-outline btn-xs js-del-btn" text="删除后将无法恢复,请谨慎操作！"><i class="fa fa-trash-o fa-fw"></i><span class="hidden-xs">删除</span></a>
+                </span>
+            </td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+    <!-- <div class="cleanfix">
+        <div class="pull-left pagination hidden-xs" >
+        </div>
+        <div class="pull-left">
+        </div>
+    </div> -->
+
+</div>
